@@ -20,9 +20,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " Vundle initialization over
 
-colorscheme inkpot " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/ 
+colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/ 
 
-set tabstop=2 " Set tab width 2    
+set sw=2      " Set tab width 2    
+set sts=2     " Set tab width 2    
 set expandtab " Convert tabs to spaces
 set nu        " Enable Line numbers
 syntax on     " Enable syntax highlighting 
