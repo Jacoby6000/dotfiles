@@ -40,6 +40,7 @@ autocmd BufNewFile,BufRead *.sc      set syntax=scala " Set syntax highlighting 
 
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1 
+set laststatus=2 
 
 " Disable Arrow keys so you plebs stay on the home-row.
 inoremap  <Up>     <NOP>
