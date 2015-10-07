@@ -30,10 +30,10 @@ set nu        " Enable Line numbers
 syntax on     " Enable syntax highlighting 
 
 " Useful keymaps
-map <C-n> :NERDTreeToggle<CR> " Ctrl+n to open/close file tree 
-map <C-p> :CtrlP<CR>          " Ctrl+p to run ctrlp fuzzy file finder
-" nmap <F8> :TagbarToggle<CR>   " F8 to enable/disable tagbar
-" map <C-tab> :EnCompleteFunc<CR>
+map <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
+map <C-p> :CtrlP<CR>            " Ctrl+p to run ctrlp fuzzy file finder
+map <C-TAB> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
+map <C-T> :EnDeclaration<CR>    " Ctrl+t to enter the declaration under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set syntax=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set syntax=scala " Set syntax highlighting for scala worksheet files
