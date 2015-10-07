@@ -1,4 +1,9 @@
-# installation
+# Key binds
+* Ctrl+n to open/close file tree
+* Ctrl+p to open ctrlp, the fuzzy file finder. May take some time to index upon first run of larger projects
+* Arrow keys have been unbound to prevent impure bastardized use of vim.
+
+# Installation
 1. copy .vimrc to ~/.vimrc
 2. Install vundle with ```git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim```
 3. If you've upgraded to el-capitan, see step 3a below
