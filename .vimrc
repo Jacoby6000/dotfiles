@@ -25,6 +25,7 @@ colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are av
 set sw=2      " Set tab width 2    
 set sts=2     " Set tab width 2    
 set expandtab " Convert tabs to spaces
+set incsearch " Have searching highlight the matching things
 set nu        " Enable Line numbers
 syntax on     " Enable syntax highlighting 
 
