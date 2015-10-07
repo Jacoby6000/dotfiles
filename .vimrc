@@ -14,6 +14,7 @@ Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,8 +36,8 @@ map <C-p> :CtrlP<CR>            " Ctrl+p to run ctrlp fuzzy file finder
 map <C-TAB> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
 map <C-T> :EnDeclaration<CR>    " Ctrl+t to enter the declaration under the cursor
 
-autocmd BufNewFile,BufRead *.scala   set syntax=scala " Set syntax highlighting for .scala files
-autocmd BufNewFile,BufRead *.sc      set syntax=scala " Set syntax highlighting for scala worksheet files
+autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
+autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
 
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1 
