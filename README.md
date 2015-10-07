@@ -27,3 +27,19 @@ brew update && brew reinstall python
 pip install --upgrade pip
 sudo pip uninstall websocket-client
 ```
+
+# ENSIME
+
+If you want to use ensime, be sure to install the ensime sbt plugin:
+
+Add this line to ~/.sbt/0.13/plugins/plugins.sbt. Notice that it's plugins/plugins.sbt, not just plugins.sbt.
+```
+addSbtPlugin("org.ensime" % "ensime-sbt" % "0.2.0")
+```
+
+Then run 
+```
+sbt gen-ensime
+```
+
+from the project root where you want to use ensime
