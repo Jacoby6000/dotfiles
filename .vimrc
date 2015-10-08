@@ -24,12 +24,14 @@ filetype plugin indent on    " required
 
 colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/ 
 
-set sw=2      " Set tab width 2    
-set sts=2     " Set tab width 2    
-set expandtab " Convert tabs to spaces
-set incsearch " Have searching highlight the matching things
-set nu        " Enable Line numbers
-syntax on     " Enable syntax highlighting 
+set sw=2       " Set tab width 2    
+set sts=2      " Set tab width 2    
+set expandtab  " Convert tabs to spaces
+set incsearch  " Have searching highlight the matching things
+set nu         " Enable Line numbers
+set cursorline " Highlight current line
+set so=3
+syntax on      " Enable syntax highlighting 
 
 " Useful keymaps
 map <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
@@ -72,3 +74,15 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 filetype plugin on
+
+set statusline=%t "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'},\  "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h "help file flag
+set statusline+=%m "modified flag
+set statusline+=%r "read only flag
+set statusline+=%y "filetype
+set statusline+=%= "left/right separator
+set statusline+=%c: "cursor column
+set statusline+=%l/%L "cursor line/total lines
+set statusline+=\ %P "percent through file
