@@ -28,7 +28,7 @@ set sw=2       " Set tab width 2
 set sts=2      " Set tab width 2    
 set expandtab  " Convert tabs to spaces
 set incsearch  " Have searching highlight the matching things
-set nu         " Enable Line numbers
+set rnu        " Enable Relative Line numbers
 set cursorline " Highlight current line
 set so=3
 syntax on      " Enable syntax highlighting 
