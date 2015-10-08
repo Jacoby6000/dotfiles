@@ -2,6 +2,9 @@
 * Ctrl+n to open/close file tree
 * Ctrl+p to open ctrlp, the fuzzy file finder. May take some time to index upon first run of larger projects
 * Arrow keys have been unbound to prevent impure bastardized use of vim.
+* ":" and ";" have been swapped, because : is far more commonly used, and it's nice to not have to press shift to get there
+* Ctrl+i to Inspect the declaration of the object under the cursor
+* Ctrl+t to view the type of the object underneath the cursor
 
 # Installation
 1. copy .vimrc to ~/.vimrc
