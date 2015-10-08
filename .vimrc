@@ -33,8 +33,9 @@ syntax on     " Enable syntax highlighting
 " Useful keymaps
 map <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
 map <C-p> :CtrlP<CR>            " Ctrl+p to run ctrlp fuzzy file finder
-map <C-TAB> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
-map <C-T> :EnDeclaration<CR>    " Ctrl+t to enter the declaration under the cursor
+map <C-tab> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
+map <C-i> :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
+map <C-t> :EnType<CR>           " Ctrl+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -58,4 +59,10 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|xml|log|diag|html|class|uml)$',
+  \ }
