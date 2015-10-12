@@ -1,24 +1,47 @@
-" Vundle initialization
-set nocompatible             
-filetype off                  
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if !has('nvim')
+  " Vundle initialization
+  set nocompatible             
+  filetype off                  
+  set rtp+=~/.vim/bundle/Vundle.vim
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'ensime/ensime-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
+ call vundle#begin()
+
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'ensime/ensime-vim'
+  Plugin 'scrooloose/nerdtree'
+  Plugin 'derekwyatt/vim-scala'
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'bling/vim-airline'
+  Plugin 'majutsushi/tagbar'
+  Plugin 'flazz/vim-colorschemes'
+  Plugin 'airblade/vim-gitgutter'
+  Plugin 'tpope/vim-surround'
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'scrooloose/syntastic'
+
+  call vundle#end() 
+else
+  call plug#begin()
+
+  Plug 'tpope/vim-fugitive'
+  Plug 'ensime/ensime-vim'
+  Plug 'scrooloose/nerdtree'
+  Plug 'derekwyatt/vim-scala'
+  Plug 'kien/ctrlp.vim'
+  Plug 'bling/vim-airline'
+  Plug 'majutsushi/tagbar'
+  Plug 'flazz/vim-colorschemes'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-surround'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/syntastic'
+
+  call plug#end()
+endif
+
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 " Vundle initialization over
 
@@ -35,8 +58,7 @@ syntax on      " Enable syntax highlighting
 
 " Useful keymaps
 map <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-map <C-p> :CtrlP<CR>            " Ctrl+p to run ctrlp fuzzy file finder
-map <C-tab> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
+map <C-q> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
 map <C-i> :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
 map <C-t> :EnType<CR>           " Ctrl+t to see the type under the cursor
 
