@@ -57,10 +57,10 @@ set so=3
 syntax on      " Enable syntax highlighting 
 
 " Useful keymaps
-map <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-map <C-q> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
-map <C-i> :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
-map <C-t> :EnType<CR>           " Ctrl+t to see the type under the cursor
+map <C-n> ;NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
+map <C-q> ;EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
+map <C-i> ;EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
+map <C-t> ;EnType<CR>           " Ctrl+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -80,7 +80,7 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
 noremap ; :
-noremap : ;
+" noremap : ;
 
 " Nerd-tree configuration
 autocmd StdinReadPre * let s:std_in=1
