@@ -1,49 +1,28 @@
-if !has('nvim')
-  " Vundle initialization
-  set nocompatible             
-  filetype off                  
-  set rtp+=~/.vim/bundle/Vundle.vim
-
- call vundle#begin()
-
-  Plugin 'VundleVim/Vundle.vim'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'ensime/ensime-vim'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'derekwyatt/vim-scala'
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'bling/vim-airline'
-  Plugin 'majutsushi/tagbar'
-  Plugin 'flazz/vim-colorschemes'
-  Plugin 'airblade/vim-gitgutter'
-  Plugin 'tpope/vim-surround'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'scrooloose/syntastic'
-
-  call vundle#end() 
-else
-  call plug#begin()
-
-  Plug 'tpope/vim-fugitive'
-  Plug 'ensime/ensime-vim'
-  Plug 'scrooloose/nerdtree'
-  Plug 'derekwyatt/vim-scala'
-  Plug 'kien/ctrlp.vim'
-  Plug 'bling/vim-airline'
-  Plug 'majutsushi/tagbar'
-  Plug 'flazz/vim-colorschemes'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'tpope/vim-surround'
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'scrooloose/syntastic'
-
-  call plug#end()
+if &compatible
+  set nocompatible
 endif
 
+call plug#begin('~/.vim/plugged')
 
-" All of your Plugins must be added before the following line
-filetype plugin indent on    " required
-" Vundle initialization over
+Plug '~/.nvim/repos/github.com/Shougo/dein.vim'
+Plug 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ensime/ensime-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'derekwyatt/vim-scala'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'flazz/vim-colorschemes'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ktvoelker/sbt-vim'
+Plug 'mileszs/ack.vim'       
+
+call plug#end()
 
 colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/ 
 
@@ -57,10 +36,10 @@ set so=3
 syntax on      " Enable syntax highlighting 
 
 " Useful keymaps
-map <C-n> ;NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-map <C-q> ;EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
-map <C-i> ;EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
-map <C-t> ;EnType<CR>           " Ctrl+t to see the type under the cursor
+nnoremap <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
+inoremap <C-q> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
+nnoremap <C-i> :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
+nnoremap <C-t> :EnType<CR>           " Ctrl+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -69,6 +48,7 @@ let g:airline_powerline_fonts = 1            " Use powerline fonts with airline.
 let g:airline#extensions#tabline#enabled = 1 
 set laststatus=2 
 
+let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -108,3 +88,4 @@ set statusline+=%= "left/right separator
 set statusline+=%c: "cursor column
 set statusline+=%l/%L "cursor line/total lines
 set statusline+=\ %P "percent through file
+
