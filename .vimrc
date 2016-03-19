@@ -18,9 +18,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
-Plug 'ktvoelker/sbt-vim'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'ktvoelker/sbt-vim'
 Plug 'mileszs/ack.vim'       
+Plug 'Shougo/deoplete.nvim'
 
 call plug#end()
 
@@ -30,6 +31,7 @@ set sw=2       " Set tab width 2
 set sts=2      " Set tab width 2    
 set expandtab  " Convert tabs to spaces
 set incsearch  " Have searching highlight the matching things
+set hlsearch
 set rnu        " Enable Relative Line numbers
 set cursorline " Highlight current line
 set so=3
@@ -48,6 +50,8 @@ let g:airline_powerline_fonts = 1            " Use powerline fonts with airline.
 let g:airline#extensions#tabline#enabled = 1 
 set laststatus=2 
 
+let g:deoplete#enable_at_startup = 1
+
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
 inoremap  <Up>     <NOP>
@@ -64,7 +68,7 @@ noremap ; :
 
 " Nerd-tree configuration
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
