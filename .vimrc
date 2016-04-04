@@ -1,27 +1,32 @@
+let mapleader = "\<SPACE>"
+
 if &compatible
   set nocompatible
 endif
 
-call plug#begin('~/.vim/plugged')
 
-Plug '~/.nvim/repos/github.com/Shougo/dein.vim'
-Plug 'VundleVim/Vundle.vim'
+if has('nvim')
+  call plug#begin('~/.config/nvim/plugged')
+  Plug 'Shougo/deoplete.nvim'
+else 
+  call plug#begin('~/.vim/plugged')
+  Plug 'Valloric/YouCompleteMe'
+endif
+
 Plug 'tpope/vim-fugitive'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'derekwyatt/vim-scala'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
+Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-" Plug 'Valloric/YouCompleteMe'
 " Plug 'ktvoelker/sbt-vim'
 Plug 'mileszs/ack.vim'       
-Plug 'Shougo/deoplete.nvim'
 
 call plug#end()
 
@@ -35,13 +40,11 @@ set hlsearch
 set rnu        " Enable Relative Line numbers
 set cursorline " Highlight current line
 set so=3
-syntax on      " Enable syntax highlighting 
 
 " Useful keymaps
-nnoremap <C-n> :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-inoremap <C-q> :EnCompleteFunc<CR> " Ctrl+tab to check autocomplete
-nnoremap <C-i> :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
-nnoremap <C-t> :EnType<CR>           " Ctrl+t to see the type under the cursor
+noremap  <leader>n :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
+nnoremap <leader>o :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
+nnoremap <leader>t :EnType<CR>           " Ctrl+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -93,3 +96,33 @@ set statusline+=%c: "cursor column
 set statusline+=%l/%L "cursor line/total lines
 set statusline+=\ %P "percent through file
 
+let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
+
+" Scala has fsc and scalac checkers--running both is pretty redundant and
+" slow. An explicit `:SyntasticCheck scalac` can always run the other.
+let g:syntastic_scala_checkers = ['fsc']
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
+nnoremap <Leader>w :w<CR>
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR> 
+nmap <silent> <c-l> :wincmd l<CR>
