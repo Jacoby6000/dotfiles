@@ -58,7 +58,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni_patterns = {}
 " let g:deoplete#sources = {}
 " let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
-let g:deoplete#omni_patterns.scala = '[^. *\t]\.\w*\|(: |\[)[A-Z]\w*'
+let g:deoplete#omni_patterns.scala = '[^. *\t]\.\w*\|(: \|\[)[A-Z]\w*'
 let g:deoplete#auto_complete_delay = 100000
 
 let g:ycm_collect_identifiers_from_tags_files = 1
