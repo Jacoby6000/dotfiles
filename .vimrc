@@ -13,12 +13,13 @@ else
   Plug 'Valloric/YouCompleteMe'
 endif
 
+Plug 'zyedidia/vim-snake'
 Plug 'tpope/vim-fugitive'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
-" Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
@@ -54,6 +55,11 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2 
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni_patterns = {}
+" let g:deoplete#sources = {}
+" let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
+let g:deoplete#omni_patterns.scala = '[^. *\t]\.\w*\|(: |\[)[A-Z]\w*'
+let g:deoplete#auto_complete_delay = 100000
 
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
