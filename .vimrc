@@ -44,21 +44,23 @@ set so=3
 
 " Useful keymaps
 noremap  <leader>n :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-nnoremap <leader>o :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
+nnoremap <leader>o :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor      
 nnoremap <leader>t :EnType<CR>           " Ctrl+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
+
+autocmd BufNewFile,BufRead *.simba   set ft=pascal
 
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1 
 set laststatus=2 
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni_patterns = {}
+let g:deoplete#omni#input_patterns = {}
 " let g:deoplete#sources = {}
 " let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
-let g:deoplete#omni_patterns.scala = '[^. *\t]\.\w*\|(: \|\[)[A-Z]\w*'
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*\','(: \|\[)[A-Z]\w*']
 let g:deoplete#auto_complete_delay = 100000
 
 let g:ycm_collect_identifiers_from_tags_files = 1
