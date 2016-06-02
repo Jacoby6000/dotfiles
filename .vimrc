@@ -39,6 +39,7 @@ set expandtab  " Convert tabs to spaces
 set incsearch  " Have searching highlight the matching things
 set hlsearch
 set rnu        " Enable Relative Line numbers
+set nu
 set cursorline " Highlight current line
 set so=3
 
@@ -55,11 +56,8 @@ let g:airline#extensions#tabline#enabled = 1
 set laststatus=2 
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni_patterns = {}
-" let g:deoplete#sources = {}
-" let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
-let g:deoplete#omni_patterns.scala = '[^. *\t]\.\w*\|(: \|\[)[A-Z]\w*'
-let g:deoplete#auto_complete_delay = 100000
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','(: \|\[)[A-Z]\w*']
 
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
