@@ -28,6 +28,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 " Plug 'ktvoelker/sbt-vim'
 Plug 'mileszs/ack.vim'       
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -39,13 +42,14 @@ set expandtab  " Convert tabs to spaces
 set incsearch  " Have searching highlight the matching things
 set hlsearch
 set rnu        " Enable Relative Line numbers
+set nu
 set cursorline " Highlight current line
 set so=3
 
 " Useful keymaps
-noremap  <leader>n :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-nnoremap <leader>o :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor      
-nnoremap <leader>t :EnType<CR>           " Ctrl+t to see the type under the cursor
+noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree 
+nnoremap <leader>o :EnDeclarationSplit<CR>    " space+i to inspect the declaration under the cursor      
+nnoremap <leader>t :EnType<CR>           " space+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -56,13 +60,13 @@ let g:airline_powerline_fonts = 1            " Use powerline fonts with airline.
 let g:airline#extensions#tabline#enabled = 1 
 set laststatus=2 
 
+let g:indentLine_char = '│'
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns = {}
 " let g:deoplete#sources = {}
 " let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
-let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*\','(: \|\[)[A-Z]\w*']
-let g:deoplete#auto_complete_delay = 100000
-
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*'] 
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
 inoremap  <Up>     <NOP>
