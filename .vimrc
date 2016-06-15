@@ -5,7 +5,7 @@ if &compatible
 endif
 
 
-if has('nvim')
+if has('nvim') 
   call plug#begin('~/.config/nvim/plugged')
   Plug 'Shougo/deoplete.nvim'
 else 
@@ -26,7 +26,7 @@ Plug 'tpope/vim-surround'
 Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-" Plug 'ktvoelker/sbt-vim'
+Plug 'ktvoelker/sbt-vim'
 Plug 'mileszs/ack.vim'       
 Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
@@ -138,3 +138,5 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR> 
 nmap <silent> <c-l> :wincmd l<CR>
+
+nnoremap <leader>q @q
