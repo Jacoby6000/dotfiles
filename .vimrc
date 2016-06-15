@@ -5,7 +5,7 @@ if &compatible
 endif
 
 
-if has('nvim')
+if has('nvim') 
   call plug#begin('~/.config/nvim/plugged')
   Plug 'Shougo/deoplete.nvim'
   Plug 'kassio/neoterm'
@@ -28,7 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-" Plug 'ktvoelker/sbt-vim'
+Plug 'ktvoelker/sbt-vim'
 Plug 'mileszs/ack.vim'       
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
@@ -149,31 +149,11 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR> 
 nmap <silent> <c-l> :wincmd l<CR>
 
-
-
-nnoremap <leader>g :set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call <SID>GrepOperator(visualmode())<cr>
-function! s:GrepOperator(type)
-    let ft = expand('%:e')
-    let unnamed_reg = @@
-
-    if a:type ==# 'v'
-        normal! `<v`>y
-    elseif a:type ==# 'char'
-        normal! `[v`]y
-    else 
-        return
-    endif
-
-     silent execute "grep -R " . shellescape(@@) . " . --include='*." . ft . "'"
-    copen
-
-    let @@ = unnamed_reg
-endfunction
-
 let g:neoterm_position = 'vertical'
 let g:neoterm_automap_keys = ',tt'
 
 nnoremap <silent> <leader>r :call neoterm#clear()<cr>:TREPLSendFile<cr>
 
 autocmd BufNewFile,BufRead *.json?* setfiletype json
+
+nnoremap <leader>q @q
