@@ -35,6 +35,10 @@ Plug 'tpope/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 Plug 'geverding/vim-hocon'
 Plug 'HerringtonDarkholme/vim-worksheet'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'in3d/vim-raml'
 
 call plug#end()
 
@@ -49,13 +53,15 @@ set cursorline " Highlight current line
 set so=3
 
 " Useful keymaps
-noremap  <leader>n :NERDTreeToggle<CR>   " Ctrl+n to open/close file tree 
-nnoremap <leader>o :EnDeclaration<CR>    " Ctrl+i to inspect the declaration under the cursor
-nnoremap <leader>t :EnType<CR>           " Ctrl+t to see the type under the cursor
+noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree 
+nnoremap <leader>o :EnDeclarationSplit<CR>    " space+i to inspect the declaration under the cursor      
+nnoremap <leader>t :EnType<CR>           " space+t to see the type under the cursor
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
 au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
+
+autocmd BufNewFile,BufRead *.simba   set ft=pascal
 
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1 
@@ -68,6 +74,8 @@ let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*', '[:\[,] ?\w*', '^import .*']
 
 let g:markdown_fenced_languages = ['sc=scala','tut=scala','sbt=scala', 'scala', 'sql']
+
+let g:indentLine_char = '│'
 
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
