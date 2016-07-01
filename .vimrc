@@ -63,8 +63,7 @@ set so=3
 
 " Useful keymaps
 noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree 
-nnoremap <leader>o :EnDeclarationSplit<CR>    " space+i to inspect the declaration under the cursor      
-nnoremap <leader>t :EnType<CR>           " space+t to see the type under the cursor
+noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar 
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -79,6 +78,7 @@ set laststatus=2
 let g:neoterm_repl_command = "sbt console"
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 500
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*', '[:\[,] ?\w*', '^import .*']
 
