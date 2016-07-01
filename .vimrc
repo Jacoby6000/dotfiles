@@ -1,5 +1,6 @@
 let mapleader = "\<SPACE>"
 
+
 if &compatible
   set nocompatible
 endif
@@ -7,17 +8,22 @@ endif
 
 if has('nvim') 
   call plug#begin('~/.config/nvim/plugged')
+  execute pathogen#infect('~/.config/nvim/unmanaged/{}')
   Plug 'Shougo/deoplete.nvim'
   Plug 'kassio/neoterm'
 else 
   call plug#begin('~/.vim/plugged')
+  execute pathogen#infect('~/.vim/unmanaged/{}')
   Plug 'Valloric/YouCompleteMe'
 endif
 
 Plug 'rking/ag.vim'
+Plug 'ashisha/image.vim'
+Plug 'robu3/vimongous'
 Plug 'zyedidia/vim-snake'
+Plug 'sirtaj/vim-openscad'
 Plug 'tpope/vim-fugitive'
-Plug 'ensime/ensime-vim'
+Plug 'ensime/ensime-vim' 
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
@@ -28,17 +34,19 @@ Plug 'tpope/vim-surround'
 Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'ktvoelker/sbt-vim'
 Plug 'mileszs/ack.vim'       
+Plug 'wakatime/vim-wakatime'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 Plug 'geverding/vim-hocon'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'HerringtonDarkholme/vim-worksheet'
 Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'in3d/vim-raml'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
@@ -49,6 +57,7 @@ set sts=2      " Set tab width 2
 set expandtab  " Convert tabs to spaces
 set rnu        " Enable Relative Line numbers
 set nu
+set nohlsearch
 set cursorline " Highlight current line
 set so=3
 
@@ -129,10 +138,10 @@ let g:syntastic_scala_checkers = ['fsc']
 nmap <leader>T :enew<cr>
 
 " Move to the next buffer
-nmap <leader>l :bnext<CR>
+nmap <leader>ll :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+nmap <leader>hh :bprevious<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
