@@ -49,6 +49,7 @@ Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jaxbot/syntastic-react'
+Plug 'kien/rainbow_parentheses.vim'
 
 call plug#end()
 
@@ -82,12 +83,14 @@ let g:neoterm_repl_command = "sbt console"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 500
 let g:deoplete#omni#input_patterns = {}
-let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*', '[:\[,] ?\w*', '^import .*']
+let g:deoplete#sources = {}
+let g:deoplete#sources.javascript = ['buffer', 'tags']
+let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*'] 
 
 let g:markdown_fenced_languages = ['sc=scala','tut=scala','sbt=scala', 'scala', 'sql']
 
 let g:indentLine_char = '│'
-
 let g:ycm_collect_identifiers_from_tags_files = 1
 " Disable Arrow keys so you plebs stay on the home-row.
 inoremap  <Up>     <NOP>
@@ -134,6 +137,8 @@ let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
 " Scala has fsc and scalac checkers--running both is pretty redundant and
 " slow. An explicit `:SyntasticCheck scalac` can always run the other.
 let g:syntastic_scala_checkers = ['fsc']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_full_redraws = 0
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
