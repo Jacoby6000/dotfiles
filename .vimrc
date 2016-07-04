@@ -5,7 +5,6 @@ if &compatible
   set nocompatible
 endif
 
-
 if has('nvim') 
   call plug#begin('~/.config/nvim/plugged')
   execute pathogen#infect('~/.config/nvim/unmanaged/{}')
@@ -47,6 +46,9 @@ Plug 'rking/ag.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'in3d/vim-raml'
 Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'jaxbot/syntastic-react'
 
 call plug#end()
 
