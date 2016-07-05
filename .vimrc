@@ -84,8 +84,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 500
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources = {}
-let g:deoplete#sources.javascript = ['buffer', 'tags']
-let g:deoplete#sources.scala = ['buffer', 'omnifunc', 'tags']
+let g:deoplete#sources.javascript = ['buffer', 'tag']
+let g:deoplete#sources.scala = ['buffer', 'omni', 'tag']
 let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*'] 
 
 let g:markdown_fenced_languages = ['sc=scala','tut=scala','sbt=scala', 'scala', 'sql']
