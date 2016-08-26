@@ -1,16 +1,15 @@
 let mapleader = "\<SPACE>"
 
-
 if &compatible
   set nocompatible
 endif
 
-if has('nvim') 
+if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
   execute pathogen#infect('~/.config/nvim/unmanaged/{}')
   Plug 'Shougo/deoplete.nvim'
   Plug 'kassio/neoterm'
-else 
+else
   call plug#begin('~/.vim/plugged')
   execute pathogen#infect('~/.vim/unmanaged/{}')
   Plug 'Valloric/YouCompleteMe'
@@ -22,7 +21,7 @@ Plug 'robu3/vimongous'
 Plug 'zyedidia/vim-snake'
 Plug 'sirtaj/vim-openscad'
 Plug 'tpope/vim-fugitive'
-Plug 'ensime/ensime-vim' 
+Plug 'ensime/ensime-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
@@ -33,7 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'mileszs/ack.vim'       
+Plug 'mileszs/ack.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
@@ -50,23 +49,28 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jaxbot/syntastic-react'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'ternjs/tern_for_vim'
+Plug 'gregsexton/matchtag'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
-colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/ 
+colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/
 
-set sw=2       " Set tab width 2    
-set sts=2      " Set tab width 2    
+set sw=2       " Set tab width 2
+set sts=2      " Set tab width 2
 set expandtab  " Convert tabs to spaces
 set rnu        " Enable Relative Line numbers
 set nu
 set nohlsearch
 set cursorline " Highlight current line
+set colorcolumn=120
 set so=3
 
 " Useful keymaps
-noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree 
-noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar 
+noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree
+noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
@@ -75,18 +79,18 @@ au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
 autocmd BufNewFile,BufRead *.simba   set ft=pascal
 
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
-let g:airline#extensions#tabline#enabled = 1 
-set laststatus=2 
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
 
 let g:neoterm_repl_command = "sbt console"
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 500
+let g:deoplete#auto_complete_delay = 100
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources = {}
 let g:deoplete#sources.javascript = ['buffer', 'tag']
 let g:deoplete#sources.scala = ['buffer', 'omni', 'tag']
-let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*'] 
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*', '(extends|with) .*']
 
 let g:markdown_fenced_languages = ['sc=scala','tut=scala','sbt=scala', 'scala', 'sql']
 
@@ -162,7 +166,7 @@ nnoremap <Leader>w :w<CR>
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR> 
+nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 let g:neoterm_position = 'vertical'
