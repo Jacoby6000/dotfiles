@@ -39,7 +39,6 @@ Plug 'tpope/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 Plug 'geverding/vim-hocon'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'HerringtonDarkholme/vim-worksheet'
 Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'Yggdroot/indentLine'
@@ -48,6 +47,7 @@ Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jaxbot/syntastic-react'
+Plug 'greplace.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'ternjs/tern_for_vim'
@@ -74,6 +74,7 @@ noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
 
 autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
 autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
+autocmd BufNewFile,BufRead *.ws      set ft=scala " Set syntax highlighting for scala worksheet files
 au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
 
 autocmd BufNewFile,BufRead *.simba   set ft=pascal
@@ -84,8 +85,10 @@ set laststatus=2
 
 let g:neoterm_repl_command = "sbt console"
 
+let g:ensime_server_v2 = 1
+
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 100
+let g:deoplete#auto_complete_delay = 200
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources = {}
 let g:deoplete#sources.javascript = ['buffer', 'tag']
@@ -119,7 +122,7 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '(\v[\/]\.(git|hg|svn)|(target)$',
-  \ 'file': '\v\.(exe|so|dll|log|diag|html|class|uml)$',
+  \ 'file': '\v\.(exe|so|dll|log|diag|html|class|uml|log)$',
   \ }
 
 filetype plugin on
