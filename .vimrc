@@ -16,9 +16,7 @@ else
 endif
 
 Plug 'rking/ag.vim'
-Plug 'ashisha/image.vim'
 Plug 'robu3/vimongous'
-Plug 'zyedidia/vim-snake'
 Plug 'sirtaj/vim-openscad'
 Plug 'tpope/vim-fugitive'
 Plug 'ensime/ensime-vim'
@@ -79,13 +77,16 @@ au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
 
 autocmd BufNewFile,BufRead *.simba   set ft=pascal
 
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+augroup END
+
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
 let g:neoterm_repl_command = "sbt console"
-
-let g:ensime_server_v2 = 1
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 200
@@ -93,9 +94,9 @@ let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources = {}
 let g:deoplete#sources.javascript = ['buffer', 'tag']
 let g:deoplete#sources.scala = ['buffer', 'omni', 'tag']
-let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*', '(extends|with) .*']
+let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*']
 
-let g:markdown_fenced_languages = ['sc=scala','tut=scala','sbt=scala', 'scala', 'sql']
+let g:markdown_fenced_languages = ['sc=scala', 'tut=scala', 'sbt=scala', 'scala', 'sql']
 
 let g:indentLine_char = '│'
 let g:ycm_collect_identifiers_from_tags_files = 1
