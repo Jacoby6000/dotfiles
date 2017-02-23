@@ -8,7 +8,6 @@ if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
   execute pathogen#infect('~/.config/nvim/unmanaged/{}')
   Plug 'Shougo/deoplete.nvim'
-  Plug 'kassio/neoterm'
 else
   call plug#begin('~/.vim/plugged')
   execute pathogen#infect('~/.vim/unmanaged/{}')
@@ -34,7 +33,6 @@ Plug 'mileszs/ack.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
-Plug 'suan/vim-instant-markdown'
 Plug 'geverding/vim-hocon'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
@@ -51,82 +49,31 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'ternjs/tern_for_vim'
 Plug 'gregsexton/matchtag'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'dag/vim2hs'
 
 call plug#end()
 
-colorscheme molokai " Set colorscheme to inkpot. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/
 
-set sw=2       " Set tab width 2
-set sts=2      " Set tab width 2
+filetype plugin indent on
+
+colorscheme molokai " Set colorscheme to molokai. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/
+
+autocmd BufNewFile,BufRead *.json?*  setfiletype json
+
+autocmd BufNewFile,BufRead *.scala   setfiletype scala
+autocmd BufNewFile,BufRead *.sc      setfiletype scala
+autocmd BufNewFile,BufRead *.ws      setfiletype scala
+
+autocmd BufNewFile,BufRead *.simba   setfiletype pascal
+
+set ts=2
+set sts=2
 set expandtab  " Convert tabs to spaces
 set rnu        " Enable Relative Line numbers
 set nu
 set nohlsearch
 set cursorline " Highlight current line
-set colorcolumn=120
-set so=3
-
-" Useful keymaps
-noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree
-noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
-
-autocmd BufNewFile,BufRead *.scala   set ft=scala " Set syntax highlighting for .scala files
-autocmd BufNewFile,BufRead *.sc      set ft=scala " Set syntax highlighting for scala worksheet files
-autocmd BufNewFile,BufRead *.ws      set ft=scala " Set syntax highlighting for scala worksheet files
-au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
-
-autocmd BufNewFile,BufRead *.simba   set ft=pascal
-
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=syntax
-  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
-augroup END
-
-let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-
-let g:neoterm_repl_command = "sbt console"
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 200
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#sources = {}
-let g:deoplete#sources.javascript = ['buffer', 'tag']
-let g:deoplete#sources.scala = ['buffer', 'omni', 'tag']
-let g:deoplete#omni#input_patterns.scala = ['[^. *\t]\.\w*','[:\[,] ?\w*','^import .*']
-
-let g:markdown_fenced_languages = ['sc=scala', 'tut=scala', 'sbt=scala', 'scala', 'sql']
-
-let g:indentLine_char = '│'
-let g:ycm_collect_identifiers_from_tags_files = 1
-" Disable Arrow keys so you plebs stay on the home-row.
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-
-noremap ; :
-" noremap : ;
-
-" Nerd-tree configuration
-autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '(\v[\/]\.(git|hg|svn)|(target)$',
-  \ 'file': '\v\.(exe|so|dll|log|diag|html|class|uml|log)$',
-  \ }
-
-filetype plugin on
+set foldlevelstart=20
 
 set statusline=%t "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'},\  "file encoding
@@ -139,14 +86,30 @@ set statusline+=%= "left/right separator
 set statusline+=%c: "cursor column
 set statusline+=%l/%L "cursor line/total lines
 set statusline+=\ %P "percent through file
+set laststatus=2
 
-let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-" Scala has fsc and scalac checkers--running both is pretty redundant and
-" slow. An explicit `:SyntasticCheck scalac` can always run the other.
-let g:syntastic_scala_checkers = ['fsc']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_full_redraws = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '(\v[\/]\.(git|hg|svn)|(target)$',
+  \ 'file': '\v\.(exe|so|dll|log|diag|html|class|uml|log)$',
+  \ }
+
+let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
+let g:airline#extensions#tabline#enabled = 1
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 500
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#sources = {}
+
+let g:indentLine_char = '│'
+
+" Useful keymaps
+noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree
+noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
+noremap  <leader>rwp viwpyiw<CR> " Replace word under cursor with word in clipboard, then re-yank it to preserve clipboard.
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
@@ -168,16 +131,36 @@ nmap <leader>bl :ls<CR>
 nnoremap <Leader>w :w<CR>
 
 " Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
-let g:neoterm_position = 'vertical'
-let g:neoterm_automap_keys = ',tt'
-
-nnoremap <silent> <leader>r :call neoterm#clear()<cr>:TREPLSendFile<cr>
-
-autocmd BufNewFile,BufRead *.json?* setfiletype json
+nmap <silent> <c-k> <c-w>k
+nmap <silent> <c-j> <c-w>j
+nmap <silent> <c-h> <c-w>h
+nmap <silent> <c-l> <c-w>l
 
 nnoremap <leader>q @q
+
+" Disable Arrow keys so you plebs stay on the home-row.
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
+noremap ; :
+" noremap : ;
+
+
+
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+augroup END
+
+
+" Nerd-tree configuration
+autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
