@@ -49,12 +49,16 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'ternjs/tern_for_vim'
 Plug 'gregsexton/matchtag'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'dag/vim2hs'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
 
 call plug#end()
 
 
-filetype plugin indent on
+filetype plugin on
 
 colorscheme molokai " Set colorscheme to molokai. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/
 
@@ -65,6 +69,8 @@ autocmd BufNewFile,BufRead *.sc      setfiletype scala
 autocmd BufNewFile,BufRead *.ws      setfiletype scala
 
 autocmd BufNewFile,BufRead *.simba   setfiletype pascal
+
+autocmd BufNewFile,BufRead *.hs setfiletype haskell
 
 set ts=2
 set sts=2
