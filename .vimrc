@@ -18,7 +18,6 @@ Plug 'rking/ag.vim'
 Plug 'robu3/vimongous'
 Plug 'sirtaj/vim-openscad'
 Plug 'tpope/vim-fugitive'
-Plug 'ensime/ensime-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
@@ -54,6 +53,7 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
+Plug 'ensime/ensime-vim'
 
 call plug#end()
 
@@ -106,9 +106,18 @@ let g:airline_powerline_fonts = 1            " Use powerline fonts with airline.
 let g:airline#extensions#tabline#enabled = 1
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 500
+let g:deoplete#auto_complete_delay = 1000
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources = {}
+let g:deoplete#disable_auto_complete = 1
+inoremap <silent><expr> <C-SPACE>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 let g:indentLine_char = '│'
 

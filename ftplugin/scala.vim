@@ -6,7 +6,8 @@ let g:syntastic_scala_scalastyle_jar = '/usr/local/Cellar/scalastyle/0.8.0/libex
 let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
 let g:syntastic_scala_checkers = ['fsc', 'scalastyle']
 
-let g:neoterm_repl_command = "sbt console"
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
+
+let ensime_server_v2=1
