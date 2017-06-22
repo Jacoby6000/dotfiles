@@ -42,7 +42,7 @@ Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jaxbot/syntastic-react'
-Plug 'greplace.vim'
+Plug 'vim-scripts/greplace.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'ternjs/tern_for_vim'
@@ -56,6 +56,10 @@ Plug 'alx741/vim-hindent'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
+Plug 'uarun/vim-protobuf'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'AndrewRadev/sideways.vim'
 
 call plug#end()
 
@@ -111,7 +115,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 1000
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources = {}
-let g:deoplete#disable_auto_complete = 1
+let g:deoplete#disable_auto_complete = 0
 inoremap <silent><expr> <C-SPACE>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -138,6 +142,11 @@ nmap <leader>ll :bnext<CR>
 " Move to the previous buffer
 nmap <leader>hh :bprevious<CR>
 
+" move parameter left
+nnoremap <leader>h :SidewaysLeft<cr>
+
+" move parameter right
+nnoremap <leader>l :SidewaysRight<cr>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
