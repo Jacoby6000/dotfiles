@@ -86,6 +86,8 @@ set nu
 set nohlsearch
 set cursorline " Highlight current line
 set foldlevelstart=20
+set foldmethod=syntax
+
 
 set statusline=%t "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'},\  "file encoding
@@ -112,9 +114,7 @@ let g:airline_powerline_fonts = 1            " Use powerline fonts with airline.
 let g:airline#extensions#tabline#enabled = 1
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 1000
-let g:deoplete#omni#input_patterns = {}
-let g:deoplete#sources = {}
+let g:deoplete#auto_complete_delay = 100
 let g:deoplete#disable_auto_complete = 0
 inoremap <silent><expr> <C-SPACE>
     \ pumvisible() ? "\<C-n>" :
@@ -178,11 +178,6 @@ noremap ; :
 " noremap : ;
 
 
-
-augroup vimrc
-  au BufReadPre * setlocal foldmethod=syntax
-  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
-augroup END
 
 
 " Nerd-tree configuration
