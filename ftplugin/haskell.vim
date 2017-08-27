@@ -11,5 +11,6 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:haskell_indent_disable = 1
 let g:haskellmode_completion_ghc = 0
+let g:hindent_line_length = 160
 
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc

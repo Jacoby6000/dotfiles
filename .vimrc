@@ -52,7 +52,6 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/neco-ghc'
 Plug 'neovimhaskell/haskell-vim'
-Plug 'alx741/vim-hindent'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
@@ -60,6 +59,7 @@ Plug 'uarun/vim-protobuf'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'AndrewRadev/sideways.vim'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
