@@ -81,7 +81,6 @@ autocmd BufNewFile,BufRead *.hs setfiletype haskell
 set ts=2
 set sts=2
 set expandtab  " Convert tabs to spaces
-set rnu        " Enable Relative Line numbers
 set nu
 set nohlsearch
 set cursorline " Highlight current line
