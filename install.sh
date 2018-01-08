@@ -19,7 +19,7 @@ echo 'Settings up vim...\n'
 mkdir -p ~/.vim/autoload
 mkdir -p ~/.vim/plugged
 ln -s $PWD/.vimrc ~/.vimrc
-ln -s $PWD/ftplugin/ ~/.vim/
+ln -s $PWD/vim/ftplugin/ ~/.vim/
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -35,5 +35,9 @@ curl -LSso ~/.config/nvim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo 'neovim set up successfully.'
+
+echo 'Setting up ideavim'
+ln -s $PWD/.ideavimrc ~/.ideavimrc
+echo 'Idea Vim linked to reference vimrc'
 
 echo 'done.'
