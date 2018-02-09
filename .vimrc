@@ -65,7 +65,7 @@ call plug#end()
 
 filetype plugin on
 
-colorscheme molokai " Set colorscheme to molokai. To see what colorschemes are available, check the contents of the directory ~/.vim/bundle/vim-colorschemes/
+colorscheme molokai
 
 autocmd BufNewFile,BufRead *.json?*  setfiletype json
 
@@ -130,18 +130,18 @@ noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree
 noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
 noremap  <leader>rwp viwpyiw<CR> " Replace word under cursor with word in clipboard, then re-yank it to preserve clipboard.
 
-nmap <C-p> :FZF<cr>
-nmap <C-P> :FZF!<cr>
+nnoremap <C-p> :FZF<cr>
+nnoremap <C-P> :FZF!<cr>
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
+nnoremap <leader>T :enew<cr>
 
 " Move to the next buffer
-nmap <leader>ll :bnext<CR>
+nnoremap <leader>ll :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>hh :bprevious<CR>
+nnoremap <leader>hh :bprevious<CR>
 
 " move parameter left
 nnoremap <leader>h :SidewaysLeft<cr>
@@ -150,10 +150,10 @@ nnoremap <leader>h :SidewaysLeft<cr>
 nnoremap <leader>l :SidewaysRight<cr>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+nnoremap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
+nnoremap <leader>bl :ls<CR>
 
 nnoremap <Leader>w :w<CR>
 
