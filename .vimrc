@@ -19,7 +19,6 @@ Plug 'robu3/vimongous'
 Plug 'sirtaj/vim-openscad'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
@@ -58,6 +57,8 @@ Plug 'uarun/vim-protobuf'
 Plug 'xolox/vim-misc'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'sbdchd/neoformat'
+Plug 'numkil/ag.nvim'
+Plug $FZFHOME
 
 call plug#end()
 
@@ -84,6 +85,7 @@ set nohlsearch
 set cursorline " Highlight current line
 set foldlevelstart=20
 set foldmethod=syntax
+set colorcolumn=80
 
 
 set statusline=%t "tail of the filename
@@ -102,11 +104,6 @@ set laststatus=2
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '(\v[\/]\.(git|hg|svn)|(target)$',
-  \ 'file': '\v\.(exe|so|dll|log|diag|html|class|uml|log)$',
-  \ }
-
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1
 
@@ -122,12 +119,19 @@ function! s:check_back_space() abort "{{{
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
 
+let g:ag_working_path_mode="r"
+
 let g:indentLine_char = '│'
+
+let g:scala_sort_across_groups=1
 
 " Useful keymaps
 noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree
 noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
 noremap  <leader>rwp viwpyiw<CR> " Replace word under cursor with word in clipboard, then re-yank it to preserve clipboard.
+
+nmap <C-p> :FZF<cr>
+nmap <C-P> :FZF!<cr>
 
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
@@ -153,12 +157,6 @@ nmap <leader>bl :ls<CR>
 
 nnoremap <Leader>w :w<CR>
 
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> <c-w>k
-nmap <silent> <c-j> <c-w>j
-nmap <silent> <c-h> <c-w>h
-nmap <silent> <c-l> <c-w>l
-
 nnoremap <leader>q @q
 
 " Disable Arrow keys so you plebs stay on the home-row.
@@ -179,6 +177,4 @@ noremap ; :
 
 " Nerd-tree configuration
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
