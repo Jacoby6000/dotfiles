@@ -85,7 +85,7 @@ set nohlsearch
 set cursorline " Highlight current line
 set foldlevelstart=20
 set foldmethod=syntax
-set colorcolumn=80
+set colorcolumn=120
 
 
 set statusline=%t "tail of the filename
@@ -110,10 +110,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 100
 let g:deoplete#disable_auto_complete = 0
+
 inoremap <silent><expr> <C-SPACE>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ deoplete#mappings#manual_complete()
+
 function! s:check_back_space() abort "{{{
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~ '\s'
@@ -128,8 +130,9 @@ let g:scala_sort_across_groups=1
 " Useful keymaps
 noremap  <leader>n :NERDTreeToggle<CR>   " space+n to open/close file tree
 noremap  <leader>t :TagbarToggle<CR>   " space+t to open/close tag bar
-noremap  <leader>rwp viwpyiw<CR> " Replace word under cursor with word in clipboard, then re-yank it to preserve clipboard.
 
+" Replace word under wursor with text in clipboard
+noremap  <leader>rwc viw"+p
 nnoremap <C-p> :FZF<cr>
 nnoremap <C-P> :FZF!<cr>
 
@@ -148,6 +151,7 @@ nnoremap <leader>h :SidewaysLeft<cr>
 
 " move parameter right
 nnoremap <leader>l :SidewaysRight<cr>
+
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nnoremap <leader>bq :bp <BAR> bd #<CR>
@@ -158,6 +162,8 @@ nnoremap <leader>bl :ls<CR>
 nnoremap <Leader>w :w<CR>
 
 nnoremap <leader>q @q
+
+nnoremap <silent><leader>/ :nohl<CR>
 
 " Disable Arrow keys so you plebs stay on the home-row.
 inoremap  <Up>     <NOP>
@@ -172,9 +178,13 @@ noremap   <Right>  <NOP>
 noremap ; :
 " noremap : ;
 
-
-
+nnoremap <silent><leader>fw :Ag <cword><CR>
 
 " Nerd-tree configuration
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Allow project-specific vimrc
+set exrc
+" ...and be secure!
+set secure
