@@ -58,7 +58,10 @@ Plug 'xolox/vim-misc'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'sbdchd/neoformat'
 Plug 'numkil/ag.nvim'
-Plug $FZFHOME
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -87,7 +90,6 @@ set foldlevelstart=20
 set foldmethod=syntax
 set colorcolumn=120
 
-
 set statusline=%t "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'},\  "file encoding
 set statusline+=%{&ff}] "file format
@@ -103,6 +105,11 @@ set laststatus=2
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=tags
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+set wildignore+=*.class,*.jar,*.iml,*.classpath,*/target/*
 
 let g:airline_powerline_fonts = 1            " Use powerline fonts with airline. may need to switch terminal font to a powerline font. I use sourcecodepro powerline enabled
 let g:airline#extensions#tabline#enabled = 1
@@ -110,6 +117,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 100
 let g:deoplete#disable_auto_complete = 0
+
+let g:UltiSnipsExpandTrigger="<c-s><c-t>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
 
 inoremap <silent><expr> <C-SPACE>
     \ pumvisible() ? "\<C-n>" :
@@ -175,6 +187,12 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+nnoremap <silent><space>gb :Gblame<CR>
+nnoremap <silent><space>gs :Gstatus<CR>
+nnoremap <silent><space>gp :Gpush<CR>
+nnoremap <silent><space>gr :Gpull --rebase<CR>
+
+
 noremap ; :
 " noremap : ;
 
@@ -188,3 +206,28 @@ autocmd StdinReadPre * let s:std_in=1
 set exrc
 " ...and be secure!
 set secure
+
+function! SQualifiedTagJump() abort
+  let l:plain_tag = expand("<cword>")
+  let l:orig_keyword = &iskeyword
+  set iskeyword+=\.
+  let l:word = expand("<cword>")
+  let &iskeyword = l:orig_keyword
+
+  let l:splitted = split(l:word, '\.')
+  let l:acc = []
+  for wo in l:splitted
+    let l:acc = add(l:acc, wo)
+    if wo ==# l:plain_tag
+      break
+    endif
+  endfor
+
+  let l:combined = join(l:acc, ".")
+  try
+    execute "ta " . l:combined
+  catch /.*E426.*/ " Tag not found
+    execute "ta " . l:plain_tag
+  endtry
+endfunction
+

@@ -1,42 +1,43 @@
 setl colorcolumn=130
 
-let g:deoplete#sources.scala = ['buffer', 'omni', 'tag']
-let g:deoplete#omni#input_patterns.scala = [ '^import .*', '[^. *\t]\.\w*', '^ *[^ ][a-zA-Z]{1,100}', '\( *_.' ]
-let g:syntastic_ignore_files = ['\m\c\.h$', '\m\.sbt$']
+let g:deoplete#sources.scala = ['buffer', 'tag']
+let g:syntastic_ignore_files = ['\m\.sbt$']
 let g:syntastic_scala_checkers = ['fsc']
 
 let g:ycm_collect_identifiers_from_tags_files = 1
 
-au VimEnter,BufRead,BufNewFile *.sc call neoterm#test#libs#add('sbt console')
+set errorformat=%E\ %#[error]\ %#%f:%l:%c:\ %m,%-Z\ %#[error]\ %p^,%-C\ %#[error]\ %m
+set errorformat+=,%W\ %#[warn]\ %#%f:%l:%c:\ %m,%-Z\ %#[warn]\ %p^,%-C\ %#[warn]\ %m
+set errorformat+=,%-G%.%#
+noremap <silent> <Leader>ff :cf .git/sbt.quickfix<CR>
+noremap <silent> <Leader>fn :cn<CR>
 
 let ensime_server_v2=1
 
 nnoremap <silent><leader>f /\(def\\|val\\|class\\|trait\\|object\) \<<C-r><C-w>\>/I<cr>
-nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) ' . expand("<cword>") . '\b'<cr>
-nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) ' . expand("<cword>") . '\b'<cr>
+nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword>'<cr>
+nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) <cword>'<cr>
+nnoremap <silent> <C-]> :<C-u>call SQualifiedTagJump()<CR>
+nnoremap <silent><leader>gt :!stags ./<CR>
+nnoremap <silent><leader>sf :!scalafmt -i -f %<CR>
+nnoremap <silent><leader>ss :T qsbt<CR>
+nnoremap <silent><leader>st :T testQuick<CR>
+nnoremap <silent><leader>si :T it:testQuick<CR>
+nnoremap <silent><leader>sc :T compile<CR>
 
-function! QualifiedTagJump() abort
-  let l:plain_tag = expand("<cword>")
-  let l:orig_keyword = &iskeyword
-  set iskeyword+=\.
-  let l:word = expand("<cword>")
-  let &iskeyword = l:orig_keyword
-
-  let l:splitted = split(l:word, '\.')
-  let l:acc = []
-  for wo in l:splitted
-    let l:acc = add(l:acc, wo)
-    if wo ==# l:plain_tag
-      break
-    endif
-  endfor
-
-  let l:combined = join(l:acc, ".")
-  try
-    execute "ta " . l:combined
-  catch /.*E426.*/ " Tag not found
-    execute "ta " . l:plain_tag
-  endtry
+function! GetPackageForFile()
+    let regexes = [
+                \   [ '/src/main/scala',      '/src/main/scala' ],
+                \   [ '/src/test/scala',      '/src/test/scala' ],
+                \   [ '/src/it/scala',        '/src/it/scala' ],
+                \   [ '/src/fun/scala',       '/src/fun/scala' ],
+                \   [ '/src/multi-jvm/scala', '/src/multi-jvm/scala' ],
+                \   [ '/app/model/scala',     '/app/model/scala' ],
+                \   [ '/app/controllers',     '/app' ],
+                \   [ '/app/com',             '/app' ],
+                \   [ '/test/com',            '/test' ],
+                \   [ '/test/scala',          '/test/scala' ]
+                \ ]
+    return _GetPackageForFile(regexes)
 endfunction
 
-nnoremap <silent> <C-]> :<C-u>call QualifiedTagJump()<CR>

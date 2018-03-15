@@ -30,7 +30,7 @@ mkdir -p ~/.config/nvim/autoload
 mkdir -p ~/.config/nvim/plugged
 ln -s $PWD/.vimrc ~/.nvimrc
 ln -s $PWD/.vimrc ~/.config/nvim/init.vim
-ln -s $PWD/ftplugin/ ~/.config/nvim/
+ln -s $PWD/vim/ftplugin/ ~/.config/nvim/
 curl -LSso ~/.config/nvim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
