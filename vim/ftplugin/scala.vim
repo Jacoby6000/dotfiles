@@ -1,7 +1,6 @@
 setl colorcolumn=130
 
-let g:deoplete#sources.scala = ['buffer', 'tag']
-let g:syntastic_ignore_files = ['\m\.sbt$']
+let g:scala_sort_across_groups=1
 let g:syntastic_scala_checkers = ['fsc']
 
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -18,10 +17,10 @@ nnoremap <silent><leader>f /\(def\\|val\\|class\\|trait\\|object\) \<<C-r><C-w>\
 nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword>'<cr>
 nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) <cword>'<cr>
 nnoremap <silent> <C-]> :<C-u>call SQualifiedTagJump()<CR>
-nnoremap <silent><leader>gt :!stags ./<CR>
+nnoremap <silent><leader>st :!stags ./<CR>
 nnoremap <silent><leader>sf :!scalafmt -i -f %<CR>
 nnoremap <silent><leader>ss :T qsbt<CR>
-nnoremap <silent><leader>st :T testQuick<CR>
+nnoremap <silent><leader>sq :T testQuick<CR>
 nnoremap <silent><leader>si :T it:testQuick<CR>
 nnoremap <silent><leader>sc :T compile<CR>
 
