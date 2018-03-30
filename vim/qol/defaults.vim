@@ -1,3 +1,5 @@
+let mapleader = "\<SPACE>"
+
 set ts=2
 set sts=2
 set expandtab  " Convert tabs to spaces

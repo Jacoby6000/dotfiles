@@ -20,8 +20,8 @@ echo 'setting up neovim...\n'
 
 mkdir -p ~/.config/nvim/autoload
 mkdir -p ~/.config/nvim/plugged
-ln -s $PWD/.vimrc ~/.nvimrc
-ln -s $PWD/.vimrc ~/.config/nvim/init.vim
+ln -s $PWD/vim/vimrc ~/.nvimrc
+ln -s $PWD/vim/vimrc ~/.config/nvim/init.vim
 ln -s $PWD/vim/ftplugin ~/.config/nvim/
 ln -s $PWD/vim/qol ~/.config/nvim/
 ln -s $PWD/vim/plugin-confs ~/.config/nvim/plugin-confs
