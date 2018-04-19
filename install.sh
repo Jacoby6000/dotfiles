@@ -35,4 +35,7 @@ echo 'Setting up ideavim'
 ln -s $PWD/.ideavimrc ~/.ideavimrc
 echo 'Idea Vim linked to reference vimrc'
 
+echo 'Setting up weechat IRC server'
+ln -s $PWD/weechat/irc.conf $HOME/.weechat/irc.conf
+
 echo 'done.'
