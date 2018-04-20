@@ -10,7 +10,5 @@ let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
 let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:haskell_indent_disable = 1
-let g:haskellmode_completion_ghc = 0
-let g:necoghc_enable_detailed_browse = 1
 let g:hindent_line_length = 120
 

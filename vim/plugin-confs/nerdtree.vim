@@ -1,4 +1,4 @@
 autocmd StdinReadPre * let s:std_in=1
 
 " space+n to open/close file tree
-noremap  <leader>n :NERDTreeToggle<CR>
+nnoremap  <leader>n :NERDTreeToggle<CR>

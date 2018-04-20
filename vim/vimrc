@@ -1,3 +1,7 @@
+" This must go here instead of qol/basic-mappings.vim, because the variable
+" may be used by plugins
+let mapleader = "\<Space>"
+
 
 if &compatible
   set nocompatible
@@ -59,6 +63,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
