@@ -47,3 +47,4 @@ nnoremap <C-w>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " Shift + ; is too hard.  Just use ;
 noremap ; :
 
+nnoremap <silent><leader>tw :%s/\s\s*$//<CR>``
