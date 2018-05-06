@@ -53,6 +53,7 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
+Plug 'scrooloose/vim-slumlord'
 Plug 'uarun/vim-protobuf'
 Plug 'xolox/vim-misc'
 Plug 'AndrewRadev/sideways.vim'
