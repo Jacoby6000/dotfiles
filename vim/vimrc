@@ -29,7 +29,7 @@ Plug 'majutsushi/tagbar'
 Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
-Plug 'derekwyatt/vim-scala'
+Plug 'jacoby6000/vim-scala'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'mileszs/ack.vim'
@@ -39,14 +39,9 @@ Plug 'geverding/vim-hocon'
 Plug 'tpope/vim-surround'
 Plug 'rking/ag.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'in3d/vim-raml'
 Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jaxbot/syntastic-react'
 Plug 'vim-scripts/greplace.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'ternjs/tern_for_vim'
 Plug 'gregsexton/matchtag'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -64,6 +59,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'wakatime/vim-wakatime'
+Plug 'jacoby6000/vimport-sort'
 
 call plug#end()
 
@@ -74,3 +70,4 @@ endfor
 for f in split(glob('~/.config/nvim/qol/*.vim'), '\n')
     exe 'source' f
 endfor
+

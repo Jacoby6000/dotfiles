@@ -1,6 +1,14 @@
 setl colorcolumn=130
 
 let g:scala_sort_across_groups=1
+let g:import_sort_settings['scala'] = {
+\ 'import_prefix': 'import ',
+\   'import_groups': [
+\     'java\(x\)\?\.',
+\     'scala\.'
+\  ]
+\}
+
 let g:syntastic_scala_checkers = ['fsc']
 
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -18,7 +26,7 @@ nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword
 nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) <cword>'<cr>
 nnoremap <silent> <C-]> :<C-u>call SQualifiedTagJump()<CR>
 nnoremap <silent><leader>st :!stags ./<CR>
-nnoremap <silent><leader>sf :!scalafmt -i -f %<CR>
+nnoremap <silent><leader>sf :!ng scalafmt -i -f %<CR>
 nnoremap <silent><leader>ss :T qsbt<CR>
 nnoremap <silent><leader>sq :T testQuick<CR>
 nnoremap <silent><leader>si :T it:testQuick<CR>

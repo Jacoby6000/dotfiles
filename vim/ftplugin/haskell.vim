@@ -32,3 +32,9 @@ let g:haskell_indent_case_alternative = 1
 
 let g:cabal_indent_section = 2
 
+let g:import_sort_settings['haskell'] = {
+\  'import_prefix': 'import \(qualified\)\? ',
+\  'import_groups': [
+\    '\(Control\)\|\(Data\)'
+\  ]
+\}
