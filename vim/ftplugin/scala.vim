@@ -25,8 +25,8 @@ nnoremap <silent><leader>f /\(def\\|val\\|class\\|trait\\|object\) \<<C-r><C-w>\
 nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword>'<cr>
 nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) <cword>'<cr>
 nnoremap <silent> <C-]> :<C-u>call SQualifiedTagJump()<CR>
-nnoremap <silent><leader>st :!stags ./<CR>
-nnoremap <silent><leader>sf :!ng scalafmt -i -f %<CR>
+nnoremap <silent><leader>st :call NgCommand("stags", "./")<CR>
+nnoremap <silent><leader>sf :call NgCommand("scalafmt",  "-i -f " . expand("%"))<CR>:e %<CR>
 nnoremap <silent><leader>ss :T qsbt<CR>
 nnoremap <silent><leader>sq :T testQuick<CR>
 nnoremap <silent><leader>si :T it:testQuick<CR>

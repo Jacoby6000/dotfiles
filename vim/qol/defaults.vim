@@ -12,8 +12,10 @@ set foldmethod=syntax
 set colorcolumn=120
 set hidden
 set mouse=a
+set autoread
 
 " Allow project-specific vimrc
 set exrc
 " ...and be secure!
 set secure
+
