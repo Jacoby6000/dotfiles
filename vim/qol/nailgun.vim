@@ -25,22 +25,31 @@ function! NgCommand(appName, args)
   call system("ng --nailgun-port " . g:nailgun_servers[a:appName]["port"] . " " . g:nailgun_servers[a:appName]["main"] . " " . a:args)
 endfunction
 
+
 function! StartNgServer(appName)
   if has_key(g:nailgun_servers, a:appName)
     let app = g:nailgun_servers[a:appName]
 
-    if app["running"] || s:checkServerStatus(a:appName)
+    if (has_key(app, "running") && app["running"]) || s:checkServerStatus(a:appName)
     else
       call system("nohup " . app["bin_name"] . " " . app["port"] . "& > $HOME/.config/nvim/ng-" . app["port"] . ".log")
       sleep 100m
-      let app["pid"] = s:pgrep(app["bin_name"])
+      let app["pid"] = s:jps(app["bin_name"])
     endif
   else
     echo "No such nailgun service configured '" . a:appName . "'"
   endif
 endfunction
 
-function! s:pgrep(processPattern)
+function! StopNgServer(appName, killFlags)
+  if (has_key(g:nailgun_servers[a:appName], "running") && g:nailgun_servers[a:appName]["running"]) || s:checkServerStatus(a:appName)
+    call system("kill " . a:killFlags . " " . g:nailgun_servers[a:appName]["pid"])
+    let g:nailgun_servers[a:appName]["running"] = 0
+    unlet g:nailgun_servers[a:appName]["running"]
+  endif
+endfunction
+
+function! s:jps(processPattern)
   let jps = system("jps | grep ".a:processPattern)
   if jps
     return (0 + split(jps)[0])
@@ -51,7 +60,7 @@ endfunction
 
 function! s:checkServerStatus(serverName)
   let v = g:nailgun_servers[a:serverName]
-  let pid = s:pgrep(v["bin_name"])
+  let pid = s:jps(v["bin_name"])
   if pid
     let v["pid"] = pid
     let v["running"] = 1
