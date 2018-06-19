@@ -21,8 +21,7 @@ noremap <silent> <Leader>fn :cn<CR>
 
 let ensime_server_v2=1
 
-nnoremap <silent><leader>f /\(def\\|val\\|class\\|trait\\|object\) \<<C-r><C-w>\>/I<cr>
-nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword>'<cr>
+" nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword>'<cr>
 nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) <cword>'<cr>
 nnoremap <silent> <C-]> :<C-u>call SQualifiedTagJump()<CR>
 nnoremap <silent><leader>st :call NgCommand("stags", "./")<CR>
@@ -31,6 +30,8 @@ nnoremap <silent><leader>ss :T qsbt<CR>
 nnoremap <silent><leader>sq :T testQuick<CR>
 nnoremap <silent><leader>si :T it:testQuick<CR>
 nnoremap <silent><leader>sc :T compile<CR>
+nnoremap <silent><LEADER>fd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent><LEADER>ss :call LanguageClient_textDocument_symbol()<CR>
 
 function! GetPackageForFile()
     let regexes = [

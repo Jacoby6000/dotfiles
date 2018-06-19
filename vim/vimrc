@@ -10,7 +10,7 @@ endif
 if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
   execute pathogen#infect('~/.config/nvim/unmanaged/{}')
-  Plug 'roxma/nvim-completion-manager'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
   Plug 'neovimhaskell/haskell-vim'
 else
@@ -45,7 +45,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'gregsexton/matchtag'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'ensime/ensime-vim'
+" Plug 'ensime/ensime-vim'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 Plug 'scrooloose/vim-slumlord'
