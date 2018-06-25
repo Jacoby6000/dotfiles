@@ -24,8 +24,8 @@ let ensime_server_v2=1
 " nnoremap <silent><leader>fd :<C-u>execute 'Ag (def\|class\|trait\|object) <cword>'<cr>
 nnoremap <silent><leader>fe :<C-u>execute 'Ag (extends\|with) <cword>'<cr>
 nnoremap <silent> <C-]> :<C-u>call SQualifiedTagJump()<CR>
-nnoremap <silent><leader>st :call NgCommand("stags", "./")<CR>
-nnoremap <silent><leader>sf :call NgCommand("scalafmt",  "-i -f " . expand("%"))<CR>:e %<CR>
+nnoremap <silent><leader>st :call NgCommand("stags", getcwd())<CR>
+nnoremap <silent><leader>sf :call NgCommand("scalafmt",  "-i -f " . expand("%:p"))<CR>:e %<CR>
 nnoremap <silent><leader>ss :T qsbt<CR>
 nnoremap <silent><leader>sq :T testQuick<CR>
 nnoremap <silent><leader>si :T it:testQuick<CR>

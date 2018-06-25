@@ -45,7 +45,6 @@ function! StopNgServer(appName, killFlags)
   if (has_key(g:nailgun_servers[a:appName], "running") && g:nailgun_servers[a:appName]["running"]) || s:checkServerStatus(a:appName)
     call system("kill " . a:killFlags . " " . g:nailgun_servers[a:appName]["pid"])
     let g:nailgun_servers[a:appName]["running"] = 0
-    unlet g:nailgun_servers[a:appName]["running"]
   endif
 endfunction
 
