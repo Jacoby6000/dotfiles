@@ -38,4 +38,8 @@ echo 'Idea Vim linked to reference vimrc'
 echo 'Setting up weechat IRC server'
 ln -s $PWD/weechat/irc.conf $HOME/.weechat/irc.conf
 
+#ghc-env does not work on osx :(
+#echo 'Setting up ghc-env'
+#ln -s $PWD/ghc-env $HOME/.ghc-env
+
 echo 'done.'
