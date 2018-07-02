@@ -1,0 +1,4 @@
+# Make Ctrl-V paste from clipboard in GHCi. (Under Bash, you actually
+# need to hit Ctrl-V twice to first escape it. No big deal.)
+bind: ctrl-v : p a s t e return
+

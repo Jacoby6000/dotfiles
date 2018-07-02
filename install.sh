@@ -31,15 +31,18 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuserc
 
 echo 'neovim set up successfully.'
 
-echo 'Setting up ideavim'
-ln -s $PWD/.ideavimrc ~/.ideavimrc
-echo 'Idea Vim linked to reference vimrc'
-
 echo 'Setting up weechat IRC server'
 ln -s $PWD/weechat/irc.conf $HOME/.weechat/irc.conf
 
 #ghc-env does not work on osx :(
 #echo 'Setting up ghc-env'
 #ln -s $PWD/ghc-env $HOME/.ghc-env
+
+echo 'Installing brittany config'
+ln -s $PWD/brittany $HOME/.config/
+
+echo 'Setting up ghci'
+ln -s $PWD/.haskeline $HOME/
+ln -s $PWD/.ghci $HOME/
 
 echo 'done.'
