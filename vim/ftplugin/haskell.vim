@@ -16,17 +16,17 @@ nnoremap <LEADER>fd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <LEADER>ss :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <LEADER>sa :call LanguageClient_textDocument_codeAction()<CR>
 
-
 set ts=2
 set sts=2
 set tw=2
+set sw=2
 set colorcolumn=130
 
-let g:haskell_indent_if = 3
+let g:haskell_indent_if = 4
 let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 1
-let g:haskell_indent_after_bare_where = 1
+let g:haskell_indent_let = 2
+let g:haskell_indent_where = 2
+let g:haskell_indent_after_bare_where = 2
 let g:haskell_indent_after_bare_do = 2
 let g:haskell_indent_after_bare_in = 2
 let g:haskell_indent_after_bare_guard = 2
@@ -37,8 +37,5 @@ let g:cabal_indent_section = 2
 let g:import_sort_settings['haskell'] = {
 \  'import_prefix': 'import \(qualified\)\? *',
 \  'import_groups': [
-\    'System.',
-\    '\(Control\)\|\(Data\)\|\(Text\).',
-\    'Test'
 \  ]
 \}

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Are you sure? Y/n"
+read res
+if [ $res = "Y" ]
+    find . -name "target" | xargs rm -rf
+    echo "Nuked"
+else
+    echo "Not Nuked"
+end

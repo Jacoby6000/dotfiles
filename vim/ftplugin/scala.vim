@@ -1,5 +1,3 @@
-setl colorcolumn=130
-
 let g:scala_sort_across_groups=1
 let g:import_sort_settings['scala'] = {
 \ 'import_prefix': 'import ',

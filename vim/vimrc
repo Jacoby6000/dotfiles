@@ -61,14 +61,19 @@ Plug 'honza/vim-snippets'
 Plug 'wakatime/vim-wakatime'
 Plug 'jacoby6000/vimport-sort'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'ktonga/vim-follow-my-lead'
 
 call plug#end()
+
+for f in split(glob('~/.config/nvim/qol/before/*.vim'), '\n')
+    exe 'source' f
+endfor
 
 for f in split(glob('~/.config/nvim/plugin-confs/*.vim'), '\n')
     exe 'source' f
 endfor
 
-for f in split(glob('~/.config/nvim/qol/*.vim'), '\n')
+for f in split(glob('~/.config/nvim/qol/after/*.vim'), '\n')
     exe 'source' f
 endfor
 
