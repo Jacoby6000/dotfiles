@@ -1,10 +1,20 @@
 #!/bin/bash
 
+echo "Preparing to delete: "
+find . -name "target" | ggrep -vE 'target.*target$'
+echo ""
+
+if [ -z $1 ] ; then
+  ADJ="Nuked"
+else
+  ADJ=$1
+fi ;
+
 echo "Are you sure? Y/n"
 read res
-if [ $res = "Y" ]
-    find . -name "target" | xargs rm -rf
-    echo "Nuked"
+if [ $res = "Y" ] ; then
+    find . -name "target" | ggrep -vE 'target.*target$' | xargs rm -rf
+    cat ~/bin/assets/mushroomcloud.ascii
 else
-    echo "Not Nuked"
-end
+    echo "Not $ADJ"
+fi ;

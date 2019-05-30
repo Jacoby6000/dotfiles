@@ -43,7 +43,6 @@ Plug 'elzr/vim-json'
 Plug 'vim-scripts/greplace.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'gregsexton/matchtag'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'ensime/ensime-vim'
 Plug 'scrooloose/vim-slumlord'
@@ -62,6 +61,8 @@ Plug 'wakatime/vim-wakatime'
 Plug 'jacoby6000/vimport-sort'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'ktonga/vim-follow-my-lead'
+Plug 'tpope/vim-unimpaired'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 call plug#end()
 

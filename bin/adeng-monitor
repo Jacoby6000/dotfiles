@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --kiosk --app='https://insights.newrelic.com/accounts/1637571/dashboards/823472?filters=%255B%257B%2522key%2522%253A%2522env%2522%252C%2522value%2522%253A%2522prod%2522%257D%255D&kiosk=true#footer-delete-button'
