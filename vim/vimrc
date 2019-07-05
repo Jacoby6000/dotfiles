@@ -57,12 +57,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'wakatime/vim-wakatime'
 Plug 'jacoby6000/vimport-sort'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'tpope/vim-unimpaired'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'will133/vim-dirdiff'
 
 call plug#end()
 

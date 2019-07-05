@@ -10,11 +10,14 @@ let g:import_sort_settings['scala'] = {
 let g:syntastic_scala_checkers = ['fsc']
 
 let g:ycm_collect_identifiers_from_tags_files = 1
-
-set errorformat=%E\ %#[error]\ %#%f:%l:%c:\ %m,%-Z\ %#[error]\ %p^,%-C\ %#[error]\ %m
-set errorformat+=,%W\ %#[warn]\ %#%f:%l:%c:\ %m,%-Z\ %#[warn]\ %p^,%-C\ %#[warn]\ %m
+" [error] /Users/jacobbarber/projects/sbt-quickfix/src/main/scala/com/dscleaver/sbt/quickfix/QuickFixAppender.scala:58: value asdf is not a member of String
+" [error] one error found
+" [error] (Compile / compileIncremental) Compilation failed
+set errorformat=%E\ %#[error]\ %#%f:%l:\ %m,%-Z\ %#[error]\ %p^,%-C\ %#[error]\ %m
+set errorformat+=,%W\ %#[warn]\ %#%f:%l:\ %m,%-Z\ %#[warn]\ %p^,%-C\ %#[warn]\ %m
 set errorformat+=,%-G%.%#
-noremap <silent> <Leader>ff :cf .git/sbt.quickfix<CR>
+
+noremap <silent> <Leader>ff :cf target/quickfix/sbt.quickfix<CR>
 noremap <silent> <Leader>fn :cn<CR>
 
 let ensime_server_v2=1
