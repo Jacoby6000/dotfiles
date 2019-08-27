@@ -1,2 +1,2 @@
-sudo ifconfig lo0 alias 169.254.169.254
-sudo finto -port 80 -log /var/log/finto.log -config $HOME/.fintorc &
+sudo ifconfig lo alias 169.254.169.254
+finto -port 80 -log $HOME/.finto/finto.log -config $HOME/.fintorc &
