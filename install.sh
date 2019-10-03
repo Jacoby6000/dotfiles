@@ -14,6 +14,7 @@ ln -s $PWD/hooks/* $HOME/.config/git/templates/hooks/
 
 git config --global alias.ctags '!.git/hooks/ctags'
 git config --global init.templatedir '$HOME/.config/git/templates'
+git config --global alias.lg 'log --pretty=format:"%Cred%h%Creset -%Creset %s %Cgreen(%cr) %C(bold yellow)<%an>%Creset %d"'
 
 echo 'git ctags setup successfully'
 echo 'setting up neovim...\n'
