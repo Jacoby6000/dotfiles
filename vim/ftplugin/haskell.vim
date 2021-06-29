@@ -7,20 +7,80 @@ let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 let g:hindent_line_length = 120
 
-nnoremap <LEADER>sf :call LanguageClient_textDocument_formatting()<CR>
-vnoremap <LEADER>sf :call LanguageClient_textDocument_rangeFormatting()<CR>
-nnoremap <LEADER>sr :call LanguageClient_textDocument_rename()<CR>
-nnoremap <LEADER>su :call LanguageClient_textDocument_references()<CR>
-nnoremap <LEADER>sh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <LEADER>fd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <LEADER>ss :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <LEADER>sa :call LanguageClient_textDocument_codeAction()<CR>
+" ~/.vimrc
+" Configuration for coc.nvim
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Some server have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gt <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+" Remap for do codeAction of current line
+nmap <leader>ac <Plug>(coc-codeaction)
+
+" Use K for show documentation in preview window
+nnoremap <silent> <leader>K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Find symbol of current document
+nnoremap <silent> <space>sd  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>sag  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 set ts=2
 set sts=2
 set tw=2
 set sw=2
-set colorcolumn=130
+set colorcolumn=120
 
 let g:haskell_indent_if = 4
 let g:haskell_indent_case = 2

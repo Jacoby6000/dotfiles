@@ -10,8 +10,8 @@ endif
 if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
   execute pathogen#infect('~/.config/nvim/unmanaged/{}')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
   Plug 'neovimhaskell/haskell-vim'
 else
   call plug#begin('~/.vim/plugged')
@@ -19,6 +19,7 @@ else
   Plug 'Valloric/YouCompleteMe'
 endif
 
+Plug 'tpope/vim-rhubarb'
 Plug 'rking/ag.vim'
 Plug 'robu3/vimongous'
 Plug 'sirtaj/vim-openscad'
@@ -55,13 +56,12 @@ Plug 'sbdchd/neoformat'
 Plug 'numkil/ag.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'jacoby6000/vimport-sort'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'tpope/vim-unimpaired'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'will133/vim-dirdiff'
 
 call plug#end()

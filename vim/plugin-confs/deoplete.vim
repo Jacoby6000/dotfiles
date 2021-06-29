@@ -1,5 +1,5 @@
-let g:deoplete#enable_at_startup = 0
+"let g:deoplete#enable_at_startup = 0
 
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
+"call deoplete#custom#source('LanguageClient',
+"            \ 'min_pattern_length',
+"            \ 2)
