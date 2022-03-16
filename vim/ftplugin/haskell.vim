@@ -78,7 +78,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 set ts=2
 set sts=2
-set tw=2
+set tw=120
 set sw=2
 set colorcolumn=120
 
@@ -93,9 +93,3 @@ let g:haskell_indent_after_bare_guard = 2
 let g:haskell_indent_case_alternative = 1
 
 let g:cabal_indent_section = 2
-
-let g:import_sort_settings['haskell'] = {
-\  'import_prefix': 'import \(qualified\)\? *',
-\  'import_groups': [
-\  ]
-\}

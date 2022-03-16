@@ -61,7 +61,8 @@ Plug 'jacoby6000/vimport-sort'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'tpope/vim-unimpaired'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'scalameta/nvim-metals'
 Plug 'will133/vim-dirdiff'
 
 call plug#end()
