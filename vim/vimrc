@@ -10,9 +10,15 @@ endif
 if has('nvim')
   call plug#begin('~/.config/nvim/plugged')
   execute pathogen#infect('~/.config/nvim/unmanaged/{}')
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+  Plug 'neovim/nvim-lspconfig'
   Plug 'neovimhaskell/haskell-vim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'scalameta/nvim-metals'
+  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+  Plug 'numkil/ag.nvim'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/vim-vsnip'
 else
   call plug#begin('~/.vim/plugged')
   execute pathogen#infect('~/.vim/unmanaged/{}')
@@ -53,16 +59,12 @@ Plug 'uarun/vim-protobuf'
 Plug 'xolox/vim-misc'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'sbdchd/neoformat'
-Plug 'numkil/ag.nvim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'jacoby6000/vimport-sort'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'tpope/vim-unimpaired'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'scalameta/nvim-metals'
 Plug 'will133/vim-dirdiff'
 
 call plug#end()
