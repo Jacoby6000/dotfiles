@@ -25,6 +25,8 @@ lua << EOF
   map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
   map("n", "gds", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
   map("n", "gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+  map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
+  map("n", "<leader>sh", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
   map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
   map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
   map("n", "<leader>cA", "<cmd>lua vim.lsp.buf.code_action()<CR>")
@@ -72,5 +74,10 @@ lua << EOF
       end,
     },
   })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig').pyright.setup {}
 EOF
 

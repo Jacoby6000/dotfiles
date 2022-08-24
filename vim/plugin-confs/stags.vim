@@ -21,4 +21,3 @@ function! SQualifiedTagJump() abort
     execute "ta " . l:plain_tag
   endtry
 endfunction
-
