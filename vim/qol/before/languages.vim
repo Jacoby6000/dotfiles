@@ -12,4 +12,5 @@ autocmd BufNewFile,BufRead *.hs      setfiletype haskell
 
 autocmd BufNewFile,BufRead Jenkinsfile setfiletype groovy
 
-
+autocmd BufNewFile,BufRead *.tf setfiletype tf
+autocmd BufNewFile,BufRead *.tfvars setfiletype tf

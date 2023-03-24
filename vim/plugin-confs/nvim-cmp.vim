@@ -29,7 +29,7 @@ lua << EOF
   map("n", "<leader>sh", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
   map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
   map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-  map("n", "<leader>cA", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  map("n", "<leader>CA", "<cmd>lua vim.lsp.buf.code_action()<CR>")
   map("n", "<leader>ws", '<cmd>lua require"metals".hover_worksheet()<CR>')
   map("n", "<leader>aa", [[<cmd>lua vim.diagnostic.setqflist()<CR>]]) -- all workspace diagnostics
   map("n", "<leader>ae", [[<cmd>lua vim.diagnostic.setqflist({severity = "E"})<CR>]]) -- all workspace errors
@@ -76,7 +76,7 @@ lua << EOF
   })
 
   -- Setup lspconfig.
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
   require('lspconfig').pyright.setup {}
 EOF

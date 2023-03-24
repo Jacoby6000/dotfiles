@@ -66,6 +66,7 @@ Plug 'jacoby6000/vimport-sort'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'tpope/vim-unimpaired'
 Plug 'will133/vim-dirdiff'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
