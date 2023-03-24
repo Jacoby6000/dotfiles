@@ -10,6 +10,7 @@ set shortmess-=F
 
 lua << EOF
   local cmd = vim.cmd
+  local api = vim.api
 
   local function map(mode, lhs, rhs, opts)
     local options = { noremap = true }
@@ -109,5 +110,54 @@ lua << EOF
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require('lspconfig')['pyright'].setup {}
+  
+  metals_config = require("metals").bare_config()
+
+  -- Example of settings
+  metals_config.settings = {
+    showImplicitArguments = true,
+    excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" }
+  }
+
+  metals_config.init_options.statusBarProvider = "on"
+
+  metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+  metals_config.init_options.statusBarProvider = "on"
+
+  metals_config.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = '😡',
+      }
+    }
+  )
+
+  local nvim_metals_group = api.nvim_create_augroup("nvim-metals", { clear = true })
+  api.nvim_create_autocmd("FileType", {
+    -- NOTE: You may or may not want java included here. You will need it if you
+    -- want basic Java support but it may also conflict if you are using
+    -- something like nvim-jdtls which also works on a java filetype autocmd.
+    pattern = { "scala", "sbt", "java" },
+    callback = function()
+      require("metals").initialize_or_attach(metals_config)
+    end,
+    group = nvim_metals_group,
+  })
+  
+  local ht = require('haskell-tools')
+  local buffer = vim.api.nvim_get_current_buf()
+  local def_opts = { noremap = true, silent = true, }
+  ht.setup {
+    hls = {
+      on_attach = function(client, bufnr)
+        local opts = vim.tbl_extend('keep', def_opts, { buffer = bufnr, })
+        -- haskell-language-server relies heavily on codeLenses,
+        -- so auto-refresh (see advanced configuration) is enabled by default
+        vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
+        vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, opts)
+      end,
+    },
+  }
 EOF
 
