@@ -14,11 +14,17 @@ if has('nvim')
   Plug 'neovimhaskell/haskell-vim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'scalameta/nvim-metals'
-  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
   Plug 'numkil/ag.nvim'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/vim-vsnip'
+  Plug 'mrcjkb/haskell-tools.nvim', { 'branch': '1.x.x' }
+  " Plug 'github/copilot.vim'
+  Plug 'zbirenbaum/copilot.lua'
+  Plug 'zbirenbaum/copilot-cmp'
 else
   call plug#begin('~/.vim/plugged')
   execute pathogen#infect('~/.vim/unmanaged/{}')
@@ -37,7 +43,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'jacoby6000/vim-scala'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'mileszs/ack.vim'
 Plug 'godlygeek/tabular'
@@ -51,7 +56,6 @@ Plug 'vim-scripts/greplace.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'gregsexton/matchtag'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'ensime/ensime-vim'
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
 Plug 'scrooloose/vim-slumlord'
@@ -66,7 +70,6 @@ Plug 'jacoby6000/vimport-sort'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'tpope/vim-unimpaired'
 Plug 'will133/vim-dirdiff'
-Plug 'github/copilot.vim'
 
 call plug#end()
 

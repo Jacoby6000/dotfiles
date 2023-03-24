@@ -9,6 +9,7 @@ autocmd BufNewFile,BufRead *.ws      setfiletype scala
 autocmd BufNewFile,BufRead *.simba   setfiletype pascal
 
 autocmd BufNewFile,BufRead *.hs      setfiletype haskell
+autocmd BufNewFile,BufRead *.cabal   setfiletype cabal 
 
 autocmd BufNewFile,BufRead Jenkinsfile setfiletype groovy
 
