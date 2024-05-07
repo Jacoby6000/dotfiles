@@ -6,6 +6,7 @@ return {
         lua = { "stylua" },
         python = { "isort", "black" },
         javascript = { { "prettierd", "prettier" } },
+        scala = { "scalafmt" },
       },
       format_on_save = {
         timeout_ms = 500,
