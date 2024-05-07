@@ -36,6 +36,7 @@ echo "Checking for required binaries..."
 ensure_command_exists git
 ensure_command_exists nvim
 ensure_command_exists stylua
+ensure_command_exists scalafmt
 echo ""
 
 echo "Setting up git aliases..."
