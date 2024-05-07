@@ -1,4 +1,0 @@
-#!/bin/bash
-parallel -j$2 -k --bar "blackholeAnd \"${*:3}\"" ::: $(seq $1)
-
-

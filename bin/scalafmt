@@ -1,3 +1,0 @@
-#! /bin/bash
-
-ng --nailgun-port 2114 org.scalafmt.cli.Cli "$@"

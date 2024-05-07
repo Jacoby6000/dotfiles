@@ -1,5 +1,0 @@
-#! /bin/bash
-
-Shards=aws kinesis list-shards --profile adtech --stream-name $1
-aws kinesis get-shard-iterator --stream-name adtech-reporting-prod --shard-id <some-shard-id> --shard-iterator-type TRIM_HORIZON --profile adtech
-aws kinesis get-records --profile adtech --shard-iterator <shard-iterator>
