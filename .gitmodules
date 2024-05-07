@@ -1,3 +1,0 @@
-[submodule "ghc-env"]
-	path = ghc-env
-	url = https://gitlab.com/fommil/ghc-env.git

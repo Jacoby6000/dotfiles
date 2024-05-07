@@ -49,4 +49,11 @@ symlink $PWD/neovim $HOME/.config/nvim
 symlink $PWD/neovim $HOME/.nvim
 echo ""
 
+echo "Linking binaries and shell configuration..."
+symlink $PWD/dotrc $HOME/.dotrc
+symlink $PWD/bin $HOME/bin
+echo ""
+
+echo "Installation complete. Remember to source the .dotrc file to enable changes in your shell."
+
 echo 'done.'
