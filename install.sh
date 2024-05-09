@@ -37,6 +37,8 @@ ensure_command_exists git
 ensure_command_exists nvim
 ensure_command_exists stylua
 ensure_command_exists scalafmt
+ensure_command_exists rustup
+ensure_command_exists cargo
 echo ""
 
 echo "Setting up git aliases..."
@@ -56,5 +58,3 @@ symlink $PWD/bin $HOME/bin
 echo ""
 
 echo "Installation complete. Remember to source the .dotrc file to enable changes in your shell."
-
-echo 'done.'

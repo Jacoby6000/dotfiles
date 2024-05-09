@@ -9,10 +9,10 @@ local root_patterns = {
   ".env",
   "mvnw",
   "gradlew",
+  "init.lua",
 }
 
 function M.get_project_root()
-  local root_patterns = { ".git", ".clang-format", "pyproject.toml", "setup.py", "build.sbt", ".env" }
   local root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
   return root_dir or "."
 end

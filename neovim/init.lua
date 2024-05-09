@@ -3,6 +3,11 @@ function main()
   require("config.options")
   setup_lazy("plugins")
   require("config.autocmds")
+
+  --  require("extras.pending_reviews")
+  -- create dashboard buffer
+  --local dashboard_bufnr = vim.api.nvim_create_buf(false, false)
+  --draw_github_notifications(dashboard_bufnr)
 end
 
 function setup_lazy(plugins, opts)

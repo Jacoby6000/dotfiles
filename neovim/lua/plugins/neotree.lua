@@ -15,6 +15,10 @@ return {
     "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   opts = {
+    filesystem = {
+      group_empty_dirs = true,
+    },
+
     source_selector = {
       -- winbar = true,
     },
