@@ -4,3 +4,5 @@ if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
 else
   export PATH=$PATH:/$HOME/bin
 fi
+
+gh status

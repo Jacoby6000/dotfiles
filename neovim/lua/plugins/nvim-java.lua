@@ -2,6 +2,7 @@ local MapUtil = require("lib.map_util")
 
 return {
   "nvim-java/nvim-java",
+  lazy = true,
   dependencies = {
     "nvim-java/lua-async-await",
     "nvim-java/nvim-java-core",

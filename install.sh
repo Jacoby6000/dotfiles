@@ -1,6 +1,7 @@
 #!/bin/bash
 PWD=`pwd`
 
+required_bins=(git nvim stylua scalafmt rustup cargo alacritty gh)
 
 function exit_with_error() {
     echo "Failed to install. Exiting..."
@@ -33,12 +34,9 @@ function symlink() {
 
 
 echo "Checking for required binaries..."
-ensure_command_exists git
-ensure_command_exists nvim
-ensure_command_exists stylua
-ensure_command_exists scalafmt
-ensure_command_exists rustup
-ensure_command_exists cargo
+for i in "${required_bins[@]}" ; do
+    ensure_command_exists $i
+done
 echo ""
 
 echo "Setting up git aliases..."
@@ -50,6 +48,10 @@ echo ""
 echo "Setting up neovim..."
 symlink $PWD/neovim $HOME/.config/nvim
 symlink $PWD/neovim $HOME/.nvim
+echo ""
+
+echo "Setting up alacritty..."
+symlink $PWD/alacritty $HOME/.config/alacritty
 echo ""
 
 echo "Linking binaries and shell configuration..."
