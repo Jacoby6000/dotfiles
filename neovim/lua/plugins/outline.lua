@@ -4,10 +4,7 @@ return {
   "hedyhli/outline.nvim",
   lazy = true,
   cmd = { "Outline", "OutlineOpen" },
-  keys = { -- Example mapping to toggle outline
+  keys = { 
     LazyMapping.map("<leader>o", "Toggle outline", "<cmd>Outline<CR>"),
-  },
-  opts = {
-    -- Your setup opts here
   },
 }

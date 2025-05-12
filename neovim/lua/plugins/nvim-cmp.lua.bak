@@ -9,45 +9,10 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "ray-x/lsp_signature.nvim",
     "L3MON4D3/LuaSnip",
   },
-  keys = {
-    LM.map("gD", "Go to definition", vim.lsp.buf.definition),
-    LM.map("K", "Show hover text", vim.lsp.buf.hover),
-    LM.map("gi", "Go to implementations", vim.lsp.buf.implementation),
-    LM.map("gr", "Show references", vim.lsp.buf.references),
-    LM.map("gds", "Show documentation", vim.lsp.buf.document_symbol),
-    LM.map("gws", "Show workspace symbol", vim.lsp.buf.workspace_symbol),
-    LM.map("<leader>cl", "Run codelens", vim.lsp.codelens.run),
-    LM.map("<leader>sh", "Show signature", vim.lsp.buf.signature_help),
-    LM.map("<leader>rn", "Rename", vim.lsp.buf.rename),
-    LM.map("<leader>f", "Format source", vim.lsp.buf.format),
-    LM.map("<leader>ca", "Show code actions", vim.lsp.buf.code_action),
-
-    -- all workspace diagnostics
-    LM.map("<leader>aa", "Show all diagnostics", vim.diagnostic.setqflist),
-
-    -- all workspace errors
-    LM.map("<leader>ae", "Show all errors", function()
-      vim.diagnostic.setqflist({ severity = "E" })
-    end),
-
-    -- all workspace warnings
-    LM.map("<leader>aw", "Show all warnings", function()
-      vim.diagnostic.setqflist({ severity = "W" })
-    end),
-
-    -- buffer diagnostics only
-    LM.map("<leader>d", "Show current buffer diagnostics", vim.diagnostic.setloclist),
-
-    LM.map("[c", "Go to previous diagnostic", function()
-      vim.diagnostic.goto_prev({ wrap = false })
-    end),
-
-    LM.map("]c", "Go to next diagnostic", function()
-      vim.diagnostic.goto_next({ wrap = false })
-    end),
-  },
+  keys = {},
   opts = function(_, opts)
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     local cmp = require("cmp")

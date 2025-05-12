@@ -1,7 +1,7 @@
 local LSP = require("lib.lsp")
 return {
   "zbirenbaum/copilot-cmp",
-  lazy = true,
+  lazy = false,
   dependencies = {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",

@@ -1,11 +1,21 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  build = function()
-    vim.cmd("TSUpdate")
-  end,
-  opts = function()
-    return {
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "scala", "python", "java" },
+  build = ":TSUpdate",
+  config = function()
+    require("nvim-treesitter.configs").setup({
+      ensure_installed = {
+        "c",
+        "cpp",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "scala",
+        "python",
+        "java",
+        "typescript",
+        "javascript",
+      },
       sync_install = false,
       auto_install = true,
       highlight = {
@@ -16,8 +26,9 @@ return {
           if ok and stats and stats.size > max_filesize then
             return true
           end
-        end,
 
+          return false
+        end,
         additional_vim_regex_highlighting = false,
       },
       incremental_selection = {
@@ -32,6 +43,6 @@ return {
       indent = {
         enable = true,
       },
-    }
+    })
   end,
 }

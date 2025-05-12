@@ -37,6 +37,11 @@ return {
         "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>"
       ),
       LM.map("<leader>tq", "List items in quickfix", require("telescope.builtin").quickfix),
+      LM.map("<C-q>", "Send selection to quickfix", function()
+        local actions = require("telescope.builtin")
+        actions.smart_send_to_qflist()
+        actions.open_qflist()
+      end),
     }
   end,
   dependencies = {
