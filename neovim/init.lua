@@ -33,7 +33,7 @@ local function configure_lsp()
     root_markers = { ".git" },
   })
 
-  for server in enabled_lsp_servers do
+  for _,server in ipairs(enabled_lsp_servers) do
     vim.lsp.enable(server)
   end
 end
