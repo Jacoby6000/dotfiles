@@ -10,3 +10,9 @@ vim.opt.hidden = true
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+
+vim.opt.listchars = {
+					tab = '▸ ',  
+			lead = '·',
+			trail = '·',
+}

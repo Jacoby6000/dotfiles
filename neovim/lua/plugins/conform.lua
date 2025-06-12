@@ -9,6 +9,9 @@ return {
         python = { "isort", "black" },
         scala = { "scalafmt" },
         rust = { "rustfmt" },
+        typescript = { "prettier" },
+        javascript = { "prettier" },
+        haskell = { "hindent" },
       },
       format_on_save = {
         timeout_ms = 500,
